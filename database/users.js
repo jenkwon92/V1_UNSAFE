@@ -44,9 +44,8 @@ async function getUsers(postData) {
 
 async function getUser(postData) {
   let getUserSQL = `
-		SELECT user_id, username, password, type
+		SELECT user_id, username, password
 		FROM user
-        JOIN user_type USING (user_type_id)
 		WHERE username = '${postData.user}';
 	`;
 

@@ -91,7 +91,7 @@ app.get("/createTables", async (req, res) => {
 // Sign up page
 app.get("/signup", (req, res) => {
   const errorMessage = req.query.errorMessage;
-  res.render("signup", { errorMessage: errorMessage });
+  res.render("signup", { errorMessage: errorMessage, username: "" });
 });
 
 // Sign up processing
@@ -109,7 +109,9 @@ app.post("/submitUser", async (req, res) => {
   if (results) {
     if (results.length == 1) {
       errorMessage =
-        "User name: " + username + " is already taken. Please try another one.";
+        "User name: " +
+        usernameHTML +
+        " is already taken. Please try another one.";
       return res.redirect(
         "/signup?duplicatedUser=1&errorMessage=" + errorMessage
       );
